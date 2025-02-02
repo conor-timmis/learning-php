@@ -25,4 +25,14 @@
     $sum = add(5, 3);
     echo "The sum is: $sum<br>";
 
+    // Define a function with a default parameter value
+    function greet($name = "Guest") {
+        echo "Hello, $name!<br>";
+    }
+
+    // Call the function without arguments
+    greet();
+
+    // Call the function with an argument
+    greet("User");
 ?>
