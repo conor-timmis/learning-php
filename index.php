@@ -1,8 +1,6 @@
 <?php
-  // Variables
-  $name = "Conor";
-  $age = 26;
-  $isStudent = false;
+  // Include variables
+  include 'variables.php';
 
   // Output
   echo "Name: $name, Age: $age, Student: $isStudent";
