@@ -1,3 +1,4 @@
 <?php
-echo "Hello, PHP!";
+  // Comment syntax example
+  echo "Hello, PHP!";
 ?>
