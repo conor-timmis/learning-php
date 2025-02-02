@@ -15,4 +15,14 @@
     // Call the function with an argument
     greet("Admin");
     greet("User");
+
+    // Define a function that returns a value
+    function add($a, $b) {
+        return $a + $b;
+    }
+
+    // Call the function and store the result
+    $sum = add(5, 3);
+    echo "The sum is: $sum<br>";
+
 ?>
