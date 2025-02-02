@@ -27,4 +27,11 @@
     for ($i = 1; $i <= 5; $i++) {
         echo "Iteration $i<br>";
     }
+
+    // While loop
+    $i = 1;
+    while ($i <= 5) {
+        echo "While loop iteration $i<br>";
+        $i++;
+    }
 ?>
