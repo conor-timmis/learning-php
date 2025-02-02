@@ -34,4 +34,10 @@
         echo "While loop iteration $i<br>";
         $i++;
     }
+
+    // Foreach loop
+    $fruits = ["Apple", "Banana", "Cherry"];
+    foreach ($fruits as $fruit) {
+        echo "Foreach loop: $fruit<br>";
+    }
 ?>
