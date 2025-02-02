@@ -13,4 +13,16 @@
   echo $fruits[3];
   echo "<br><br>";
   
+  // Associative Array
+  $person = [
+      "name" => "Conor",
+      "age" => 26,
+      "city" => "United Kingdom"
+  ];
+
+    echo "Associative Array:<br>";
+    echo $person["name"];  // "Conor"
+    echo "<br>";
+    echo $person["age"];   // "26"
+    echo "<br><br>";
 ?>
