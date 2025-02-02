@@ -25,4 +25,18 @@
     echo "<br>";
     echo $person["age"];   // "26"
     echo "<br><br>";
+
+    // Multidimensional Array
+    $students = [
+        ["name" => "User", "age" => 18],
+        ["name" => "Guy", "age" => 22],
+        ["name" => "Man", "age" => 21]
+    ];
+
+    echo "Multidimensional Array:<br>";
+    echo $students[0]["name"];  // "User"
+    echo "<br>";
+    echo $students[1]["age"];   // "22"
+    echo "<br><br>";
+
 ?>
