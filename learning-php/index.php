@@ -1,3 +1,28 @@
+<?php
+session_start();
+
+// Initialize users session if not set
+if (!isset($_SESSION["users"])) {
+    $_SESSION["users"] = [
+        ["name" => "Conor", "age" => 26],
+        ["name" => "Admin", "age" => 30],
+        ["name" => "User", "age" => 22]
+    ];
+}
+
+// Function to return a greeting based on age
+function getGreeting($age) {
+    if ($age >= 18) {
+        return "You're an adult!";
+    } elseif ($age >= 13) {
+        return "You're a teenager!";
+    } else {
+        return "You're a child!";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +45,23 @@
 
         <button type="submit">Submit</button>
     </form>
+
+    <hr>
+
+    <h2>Registered Users</h2>
+    <?php if (!empty($_SESSION["users"])): ?>
+        <ul>
+            <?php foreach ($_SESSION["users"] as $user): ?>
+                <li>
+                    <strong><?php echo htmlspecialchars($user["name"]); ?></strong> 
+                    (<?php echo $user["age"]; ?> years old) - 
+                    <?php echo getGreeting($user["age"]); ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>No users registered yet.</p>
+    <?php endif; ?>
 
 </body>
 </html>
