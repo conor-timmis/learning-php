@@ -1,30 +1,42 @@
 <?php
-  // Check if form is submitted
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      // Get form data
-      $name = $_POST['name'];
-      $age = $_POST['age'];
+// Start session
+session_start();
 
-      // Store data in an array (simulating a database)
-      $users = [
-          ["name" => "Conor", "age" => 26],
-          ["name" => "Admin", "age" => 30],
-          ["name" => "User", "age" => 22]
-      ];
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize input data
+    $name = htmlspecialchars(trim($_POST['name']));
+    $age = filter_var($_POST['age'], FILTER_VALIDATE_INT);
 
-      // Add new user to the array
-      $users[] = ["name" => $name, "age" => $age];
+    // Validate form inputs
+    if (empty($name) || !$age) {
+        echo "<p style='color:red;'>Invalid input. Please try again.</p>";
+        echo "<br><a href='index.php'>Go Back</a>";
+        exit;
+    }
 
-      echo "<h2>Welcome, $name!</h2>";
-      echo "<p>Your age is $age.</p>";
+    // Store data in session (simulating a database)
+    if (!isset($_SESSION["users"])) {
+        $_SESSION["users"] = [
+            ["name" => "Conor", "age" => 26],
+            ["name" => "Admin", "age" => 30],
+            ["name" => "User", "age" => 22]
+        ];
+    }
 
-      echo "<h3>All Users:</h3>";
-      foreach ($users as $user) {
-          echo "<p>Name: " . $user["name"] . ", Age: " . $user["age"] . "</p>";
-      }
+    // Add new user
+    $_SESSION["users"][] = ["name" => $name, "age" => $age];
 
-      echo "<br><a href='index.php'>Go Back</a>";
-  } else {
-      echo "<p>Invalid request.</p>";
-  }
+    echo "<h2>Welcome, $name!</h2>";
+    echo "<p>Your age is $age.</p>";
+
+    echo "<h3>All Users:</h3>";
+    foreach ($_SESSION["users"] as $user) {
+        echo "<p>Name: " . $user["name"] . ", Age: " . $user["age"] . "</p>";
+    }
+
+    echo "<br><a href='index.php'>Go Back</a>";
+} else {
+    echo "<p>Invalid request.</p>";
+}
 ?>
